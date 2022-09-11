@@ -17,3 +17,8 @@ Als eines der ersten Dinge sollte die Buchung für die diversen Projekte hier zu
 Hierbei sind die Websites der Projekte getrennt von den Buchungen zu betrachten. Die Projektwebsite ist nur die Werbe- und Infomationsplatform für diese. Für die Buchungen werden die Besucher auf die auf die fsa-center-Buchungsmaske weiter geleitet. Die abgeschlossenen Buchungen werden dann dort in der Datenbank erfasst und können ausgelesen werden.
 So können weiterlaufenden Daten der Buchung, zb Bezahltstatus, Info mails, etc zentral über ein Webinterface eingesen und bearbeitet werden.
 Dazu kann die Projektwebsite die Daten über die Auslastung und Termine der Buchungszeiträume durch eine API von der fsa-panel Datenbank einholen und dynamisch auf der Infoseite anpassen.
+
+
+
+#### Memo an mich
+Bisher habe ich nur ein laravel projekt angelegt und darin breeze für das login system installiert. dazu habe ich noch localzation, also mehrere sprachen eingerichtet, das heist du kannst suf english die dinge eingeben und dan den string in einer de.json übersetztn. mehr hab ich noch nciht gemacht. menno. mach weiter und sei kein perfektionist.
