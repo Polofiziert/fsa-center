@@ -21,4 +21,4 @@ Dazu kann die Projektwebsite die Daten über die Auslastung und Termine der Buch
 
 
 #### Memo an mich
-Bisher habe ich nur ein laravel projekt angelegt und darin breeze für das login system installiert. dazu habe ich noch localzation, also mehrere sprachen eingerichtet, das heist du kannst suf english die dinge eingeben und dan den string in einer de.json übersetztn. mehr hab ich noch nciht gemacht. menno. mach weiter und sei kein perfektionist.
+Bisher habe ich nur ein laravel projekt angelegt und darin breeze für das login system installiert. dazu habe ich noch localzation, also mehrere sprachen eingerichtet, das heist du kannst suf english die dinge eingeben und dan den string in einer de.json übersetztn. dann haben ich noch die migrations für die ersten tabellen angelegt, aber nciht die für ihre verbunds tabellen, das kannst du dann machen. mehr hab ich noch nciht gemacht. menno. mach weiter und sei kein perfektionist.
