@@ -3,5 +3,11 @@
     "You're logged in!": "Du bist Eingeloggt!",
     "Schedule": "Zeitplan",
     "Log Out": "Ausloggen",
-    "Settings": "Einstellungen"
+    "Settings": "Einstellungen",
+    "General": "Allgemein",
+    "Bookings": "Buchungen",
+    "Camps": "Camps",
+    "Workshops": "Workshops",
+    "Projects": "Projekte"
+    
 }

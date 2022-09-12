@@ -28,6 +28,12 @@
             <main>
                 {{ $slot }}
             </main>
+            @if (request()->routeIs('project'))
+                @props(['project'])
+                @include('layouts.sidebar')
+            @else
+                @include('layouts.sidebar')
+            @endif
         </div>
     </body>
 </html>
