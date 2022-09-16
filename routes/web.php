@@ -33,4 +33,8 @@ Route::get('project/{id}', function ($id) {
     ]);
 })->middleware(['auth'])->name('project');
 
+Route::get('/project', function () {
+    return view('projectCreate');
+})->middleware(['auth'])->name('projects-create');
+
 require __DIR__.'/auth.php';

@@ -29,7 +29,7 @@
                 {{ $slot }}
             </main>
             @if (request()->routeIs('project'))
-                @props(['project'])
+                @props(['project']) {{-- Pass down the Project Object for the sidebar from the layout --}}
                 @include('layouts.sidebar')
             @else
                 @include('layouts.sidebar')
