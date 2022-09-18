@@ -15,25 +15,29 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            <div class="pl-64"> <!-- width of the sidebar -->
+                @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+                <!-- Page Heading -->
+                <header class="bg-white shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-            @if (request()->routeIs('project'))
-                @props(['project']) {{-- Pass down the Project Object for the sidebar from the layout --}}
-                @include('layouts.sidebar')
-            @else
-                @include('layouts.sidebar')
-            @endif
+                <!-- Page Content -->
+                <main>
+                    {{ $slot }}
+                </main>
+            </div>
+            <div>
+                @if (request()->routeIs('project'))
+                    @props(['project']) {{-- Pass down the Project Object for the sidebar from the layout --}}
+                    @include('layouts.sidebar')
+                @else
+                    @include('layouts.sidebar')
+                @endif
+            </div>
         </div>
     </body>
 </html>
