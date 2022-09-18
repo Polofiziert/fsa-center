@@ -1,5 +1,9 @@
 <?php
+
+use App\Http\Controllers\ProjectController;
 use App\Models\Project;
+use Database\Factories\ProjectFactory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,20 +25,18 @@ Route::get('dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('projects', function () {
-    return view('projects', [
-        "projects" => Project::all()
-    ]);
-})->middleware(['auth'])->name('projects');
 
-Route::get('project/{id}', function ($id) {
-    return view('project', [
-        "project" => Project::findOrFail($id)
-    ]);
-})->middleware(['auth'])->name('project');
 
-Route::get('/project', function () {
-    return view('projectCreate');
-})->middleware(['auth'])->name('createProject');
+Route::get('projects', [ProjectController::class, 'index'])->middleware(['auth'])->name('projects');
+
+Route::get('projects/create', [ProjectController::class, 'create'])->middleware(['auth'])->name('createProject');
+Route::post('projects/delete/{project}', [ProjectController::class, 'delete'])->middleware(['auth'])->name('deleteProject');
+Route::post('projects/update/{project}', [ProjectController::class, 'update'])->middleware(['auth'])->name('updateProject');
+Route::post('projects', [ProjectController::class, 'store'])->middleware(['auth'])->name('storeProject');
+
+Route::get('projects/{project}', [ProjectController::class, 'show'])->middleware(['auth'])->name('showProject');
+Route::get('projects/{project}/settings', [ProjectController::class, 'settings'])->middleware(['auth'])->name('showProjectSettings');
+
+
 
 require __DIR__.'/auth.php';

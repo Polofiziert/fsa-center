@@ -9,13 +9,19 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <!-- Current Users Projects -->
+                    <h3>{{__("Your Projects")}}:</h3>
                     <div class="grid grid-cols-2 gap-4 auto-rows-max">
-                        @foreach ($projects as $project)
+
+                        @foreach ($projectsUser as $project)
                             <div class="border-2 border-inherit rounded-md pl-3 pr-3 pt-1 pb-1 hover:border-indigo-500">
-                                <a class="font-bold" href="{{route('project', $project->id )}}">{{ $project->title}}</a>
-                                <p>{{ $project->description}}</p>
+                                <a class="font-bold" href="{{route('showProject', $project->id )}}">{{ $project->title}}</a>
+                                <p>{{ Str::limit($project->description, 60)}}</p>
+                                <h6 class="text-xs">{{ __('Creator') }}: {{ $project->user->name }}</h6>
                             </div>
                         @endforeach
+
+                        <!-- New Project -->
                         <div class="border-2 border-inherit hover:border-indigo-500 rounded-md pl-2 pr-2 pt-1 pb-1 flex items-center">
                             <div class="justify-left ml-2 mr-3">
                                 <a href="{{ route('createProject') }}">
@@ -27,6 +33,20 @@
                                 <p>{{ __("Create a new Project") }}</p>
                             </div>
                         </div> 
+                        
+                    </div>
+
+                    <!-- All Projects -->
+                    <h3>{{__("All Projects")}}:</h3>
+                    <div class="grid grid-cols-2 gap-4 auto-rows-max">
+
+                        @foreach ($projectsAll as $project)
+                            <div class="border-2 border-inherit rounded-md pl-3 pr-3 pt-1 pb-1 hover:border-indigo-500">
+                                <a class="font-bold" href="{{route('showProject', $project->id )}}">{{ $project->title}}</a>
+                                <p>{{ Str::limit($project->description, 60)}}</p>
+                                <h6 class="text-xs">{{ __('Creator') }}: {{ $project->user->name }}</h6>
+                            </div>
+                        @endforeach
 
                     </div>
                 </div>

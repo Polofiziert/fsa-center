@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->comment('Infos about projects');
             $table->id();
+            $table->foreignId("user_id");
             $table->string('title')->unique();
-            $table->string('description');
+            $table->text('description');
             $table->string('image');
             $table->timestamps();
         });
