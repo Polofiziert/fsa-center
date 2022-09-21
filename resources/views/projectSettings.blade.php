@@ -1,4 +1,4 @@
-<x-app-layout :project=$project > {{-- Pass project down to app layout just so it can pass it futher down to sidebar layout --}}
+<x-app-layout :project=$project> {{-- Pass project down to app layout just so it can pass it futher down to sidebar layout --}}
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ $project->title }} -> {{__('General Settings')}}
@@ -32,17 +32,17 @@
                         <div class="col-span-1">
                             <form method="POST" action="{{ route('updateProject', $project) }}" class="grid grid-cols-3 gap-4 ">
                                 @csrf
-                                <div class="col-span-1">
+                                <div class="col-span-3">
                                     <label  class="font-bold"> {{ __("Name")}}</label >
-                                    <input type="text" placeholder=" {{ __("Title")}}" name="title" id="title"  value="{{ old('title') }}" @error('title') autofocus @enderror class="w-full border-inherit rounded-md border-2 focus:border-indigo-500 @error('title') border-red-500 @enderror" >
+                                    <input type="text" placeholder=" {{ $project->title }}" name="title" id="title"  value="{{ old('title') }}" @error('title') autofocus @enderror class="w-full border-inherit rounded-md border-2 focus:border-indigo-500 @error('title') border-red-500 @enderror" >
                                 </div>
-                                <div class="col-span-2 col-start-1">
-                                    <label  class="font-bold"> {{ __("Descrition")}}</label >
-                                    <textarea type="text" placeholder=" {{ __("Descrition")}}" name="description" id="description" @error('descitpion') autofocus @enderror  rows=3 class="w-full border-inherit rounded-md border-2 focus:border-indigo-500 @error('description') border-red-500 @enderror" >{{ old('description') }}</textarea>
+                                <div class="col-span-3 col-start-1">
+                                    <label  class="font-bold"> {{ __("Description")}}</label >
+                                    <textarea type="text" placeholder=" {{ $project->description }}" name="description" id="description" @error('descitpion') autofocus @enderror  rows=3 class="w-full border-inherit rounded-md border-2 focus:border-indigo-500 @error('description') border-red-500 @enderror" >{{ old('description') }}</textarea>
                                 </div>
-                                <div class="col-span-1 col-start-1">
+                                <div class="col-span-3 col-start-1">
                                     <label  class="font-bold"> {{ __("Image")}}</label >
-                                    <input type="text" placeholder="{{ __("Image")}}" name="image" id="image" value="{{ old('image') }}" @error('image') autofocus @enderror class="w-full border-inherit rounded-md border-2 focus:border-indigo-500 @error('image') border-red-500 @enderror" >
+                                    <input type="text" placeholder="{{ $project->image }}" name="image" id="image" value="{{ old('image') }}" @error('image') autofocus @enderror class="w-full border-inherit rounded-md border-2 focus:border-indigo-500 @error('image') border-red-500 @enderror" >
                                 </div>
                                 <div class="col-span-1">
                                     <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
@@ -52,13 +52,29 @@
                             </form>
                         </div>
                         <div class="col-span-1">
-                            Test
+
+                            <h1 class="font-bold">{{ __("Created at")}}</h1>
+                            <div class="border-2 border-inherit rounded-md pl-3 pr-3 pt-2 pb-2">
+                                <p>{{ $project->created_at}}</p>
+                            </div>
+
+                            <h1 class="font-bold pt-4">{{ __("Last Updated at")}}</h1>
+                            <div class="border-2 border-inherit rounded-md pl-3 pr-3 pt-2 pb-2">
+                                <p>{{ $project->updated_at}}</p>
+                            </div>
+
+                            <h1 class="font-bold pt-4">{{ __("Created by")}}</h1>
+                            <div class="border-2 border-inherit rounded-md pl-3 pr-3 pt-2 pb-2">
+                                <p>{{ $project->user->name}}</p>
+                            </div>
+
+                            <div class="pr-3 pt-3 pb-3">
+                                <button type="button" onclick="document.getElementById('modal').style.display = 'block';" class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">
+                                    {{__("Delete")}}
+                                </button>
+                            </div>
                         </div>
                     </div>
-                        <br>
-                        <button type="button" onclick="document.getElementById('modal').style.display = 'block';" class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">
-                            {{__("Delete")}}
-                        </button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CampController;
 use App\Http\Controllers\ProjectController;
 use App\Models\Project;
 use Database\Factories\ProjectFactory;
@@ -27,16 +28,24 @@ Route::get('dashboard', function () {
 
 
 
-Route::get('projects', [ProjectController::class, 'index'])->middleware(['auth'])->name('projects');
+Route::get('project', [ProjectController::class, 'index'])->middleware(['auth'])->name('projects');
 
-Route::get('projects/create', [ProjectController::class, 'create'])->middleware(['auth'])->name('createProject');
-Route::post('projects/delete/{project}', [ProjectController::class, 'delete'])->middleware(['auth'])->name('deleteProject');
-Route::post('projects/update/{project}', [ProjectController::class, 'update'])->middleware(['auth'])->name('updateProject');
-Route::post('projects', [ProjectController::class, 'store'])->middleware(['auth'])->name('storeProject');
+Route::get('project/create', [ProjectController::class, 'create'])->middleware(['auth'])->name('createProject');
+Route::post('project/delete/{project}', [ProjectController::class, 'delete'])->middleware(['auth'])->name('deleteProject');
+Route::post('project/update/{project}', [ProjectController::class, 'update'])->middleware(['auth'])->name('updateProject');
+Route::post('project', [ProjectController::class, 'store'])->middleware(['auth'])->name('storeProject');
 
-Route::get('projects/{project}', [ProjectController::class, 'show'])->middleware(['auth'])->name('showProject');
-Route::get('projects/{project}/settings', [ProjectController::class, 'settings'])->middleware(['auth'])->name('showProjectSettings');
+Route::get('project/{project}', [ProjectController::class, 'show'])->middleware(['auth'])->name('showProject');
+Route::get('project/{project}/settings', [ProjectController::class, 'settings'])->middleware(['auth'])->name('showProjectSettings');
 
 
+Route::get('project/{project}/camp', [CampController::class, 'index'])->middleware(['auth'])->name('camps');
+
+//Route::post('project/{project}/camp/create', [CampController::class], 'create')->middleware(['auth'])->name('createCamp');
+//Route::post('project/{project}/camp/delete/{camp}', [CampController::class], 'delete')->middleware(['auth'])->name('deleteCamp');
+//Route::post('project/{project}/camp/update/{camp}', [CampController::class], 'update')->middleware(['auth'])->name('updateCamp');
+//Route::post('project/{project}/camp', [CampController::class], 'store')->middleware(['auth'])->name('storeCamp');
+
+//Route::get('project/{project}/camp/{camp}', [CampController::class], 'index')->middleware(['auth'])->name('showCamp');
 
 require __DIR__.'/auth.php';

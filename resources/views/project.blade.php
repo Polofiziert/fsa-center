@@ -1,4 +1,4 @@
-<x-app-layout :project=$project > {{-- Pass project down to app layout just so it can pass it futher down to sidebar layout --}}
+<x-app-layout :project=$project> {{-- Pass project down to app layout just so it can pass it futher down to sidebar layout --}}
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ $project->title }}
@@ -25,8 +25,6 @@
                             </h1>
                             <p>{{ $project->description}}</p>
                         </div>
-                        <br>
-                        <button type="button" onclick="document.getElementById('modal').style.display = 'block';" class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Delete</button>
                 </div>
             </div>
         </div>

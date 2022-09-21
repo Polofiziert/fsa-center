@@ -104,6 +104,24 @@ class ProjectController extends Controller
      */
     public function update(Project $project, Request $request)
     {
-        dd($project, $request);
-    }
+        $validated = $request->validate([
+            'title' => 'bail|unique:projects|max:40',
+            'description' => '',
+            'image' => ''
+        ]);
+
+        if(isset($validated["title"])){
+            $project->title = $validated["title"];
+        }
+        if(isset($validated["description"])){
+            $project->description = $validated["description"];
+        }
+        if(isset($validated["image"])){
+            $project->image = $validated["image"];
+        }
+        $project->update();
+
+        return redirect()->action(
+            [ProjectController::class, 'show'], [$project]
+        );    }
 }

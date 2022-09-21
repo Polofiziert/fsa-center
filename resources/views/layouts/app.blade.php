@@ -31,9 +31,9 @@
                 </main>
             </div>
             <div>
-                @if (Str::contains(Route::currentRouteName(), "Project"))
-                    @props(['project']) {{-- Pass down the Project Object for the sidebar from the layout --}}
-                    @include('layouts.sidebar')
+                @props(['project']) {{-- Pass down the Project Object for the sidebar from the layout --}}
+                @if (isset($project))
+                        @include('layouts.sidebar')
                 @else
                     @include('layouts.sidebar')
                 @endif
