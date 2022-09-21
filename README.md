@@ -6,6 +6,18 @@ Dabei bleiben die Websites der Projekte eigenständig, jedoch laufen die allgeme
 Das Center kann also Schritt für Schritt um Funktionalität erweitert werden. Parallel dazu können die Websites der Projekte eigenständig erstellt werden. Für die allgemein relevanten daten kann dann die gemeinsame Datenbank des fsa-center genutzt werden.  
 Hierbei soll das Konzept so allgemein wie möglich gehalten werden, um spätere noch unabsehbare Ideen direkt unterstützen zu können.
 
+## Instalation
+Einfach clonen und dann im verzeuchniss
+
+composer install
+php artisan migrate
+php artisan key:generate
+php artisan serve
+npm run dev
+
+ausführen und testen.
+"php artisan serve" und "npm run dev" müssen paralel laufen da "npm run dev" den server für die compilierung des css und js stellt
+
 ## Programmierung
 Programmiert soll das fsa-center in PHP-Laravel werden. Gehostet über Microsoft Azure. Die Datenbank ist eine normale MySQL Datenbank.
 Dieser Ansatz sollte ein Kompromiss sein zwischen den Vorteilen von Cloudhosting, Containerization und den damit verbundenen Nachteilen der Abhängigkeit und des Datenschutzes.  Da jederzeit auf Virtuelle- oder Routserver umgestigen werden und auch selbst gehostet werden kann. Auch eine offline Instanz auf dem Campgelände ist denkbar.
