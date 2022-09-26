@@ -18,7 +18,7 @@ class CampController extends Controller
     {
         $camps = Project::find($project->id)->camps; //TODO: Have to Add Periods and Workshops to Camp object
 
-        return view('camps', [
+        return view('camps.index', [
             'camps' => $camps,
             'project' => $project
         ]);
@@ -30,7 +30,7 @@ class CampController extends Controller
      * @return \Illuminate\View\View
      */
     public function create(Project $project){
-        return view('campCreate', [
+        return view('camps.create', [
             'project' => $project
         ]);
     }

@@ -19,7 +19,7 @@ class ProjectController extends Controller
         $projectsAll = Project::with("user")->get();
         $projectsUser = $projectsAll->where('user_id', Auth::user()->id);
     
-        return view('projects', [
+        return view('projects.index', [
             "projectsAll" => $projectsAll,
             "projectsUser" => $projectsUser,
         ]);
@@ -31,7 +31,7 @@ class ProjectController extends Controller
      * @return \Illuminate\View\View
      */
     public function show(Project $project){
-        return view('project', [
+        return view('projects.show', [
             "project" => $project
         ]);
     }
@@ -43,7 +43,7 @@ class ProjectController extends Controller
      */
     public function settings(Project $project)
     {
-        return view('projectSettings', [
+        return view('projects.settings', [
             "project" => $project
         ]);
     }
@@ -54,7 +54,7 @@ class ProjectController extends Controller
      * @return \Illuminate\View\View
      */
     public function create(){
-        return view('projectCreate');
+        return view('projects.create');
     }
 
     /**
