@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId("project_id");
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('image');
             $table->string('type');
-            $table->integer('age-start');
-            $table->integer('age-end');
+            $table->integer('age_start');
+            $table->integer('age_end');
             $table->integer('charge');
             $table->integer('charge_reduced');
             $table->timestamps();

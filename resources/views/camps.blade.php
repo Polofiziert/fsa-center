@@ -20,7 +20,18 @@
                             </div>
                         @endforeach
 
-
+                        <!-- New Project -->
+                        <div class="border-2 border-inherit hover:border-indigo-500 rounded-md pl-2 pr-2 pt-1 pb-1 flex items-center">
+                            <div class="justify-left ml-2 mr-3">
+                                <a href="{{ route('createCamp', $project->id)  }}">
+                                    <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </a>
+                            </div>
+                            <div class="justify-center">
+                                <a class="font-bold" href="{{ route('createCamp', $project->id) }}">{{__("New Camp")}}</a>
+                                <p>{{ __("Create a new Camp") }}</p>
+                            </div>
+                        </div> 
                         
                     </div>
 
