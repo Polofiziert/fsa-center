@@ -88,7 +88,7 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function delete(Project $project)
+    public function delete(Project $project)   //TODO: add success message
     {
         $project->delete();
         return redirect()->action(

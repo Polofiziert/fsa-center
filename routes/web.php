@@ -42,8 +42,8 @@ Route::get('project/{project}/settings', [ProjectController::class, 'settings'])
 Route::get('project/{project}/camp', [CampController::class, 'index'])->middleware(['auth'])->name('camps');
 
 Route::get('project/{project}/camp/create', [CampController::class, 'create'])->middleware(['auth'])->name('createCamp');
-//Route::post('project/{project}/camp/delete/{camp}', [CampController::class, 'delete])->middleware(['auth'])->name('deleteCamp');
-//Route::post('project/{project}/camp/update/{camp}', [CampController::class, 'update'])->middleware(['auth'])->name('updateCamp');
+Route::post('project/{project}/camp/delete/{camp}', [CampController::class, 'delete'])->middleware(['auth'])->name('deleteCamp');
+Route::post('project/{project}/camp/update/{camp}', [CampController::class, 'update'])->middleware(['auth'])->name('updateCamp');
 Route::post('project/{project}/camp', [CampController::class, 'store'])->middleware(['auth'])->name('storeCamp');
 
 //Route::get('project/{project}/camp/{camp}', [CampController::class, 'index'])->middleware(['auth'])->name('showCamp');

@@ -17,6 +17,10 @@
                             <div class="border-2 border-inherit rounded-md pl-3 pr-3 pt-1 pb-1 hover:border-indigo-500">
                                 <a class="font-bold" href="#">{{ $camp->title}}</a>
                                 <p>{{ Str::limit($camp->description, 60)}}</p>
+                                <div class="object-right">
+                                    <p>Price Normal: {{ $camp->charge }}€ Price Reduced: {{ $camp->charge_reduced }}€</p>
+                                    <p>From {{ $camp->age_start }} to {{ $camp->age_end }} Years</p>
+                                </div>
                             </div>
                         @endforeach
 

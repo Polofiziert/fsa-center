@@ -42,28 +42,10 @@ class CampController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Project $project) {
-        $validated = $request->validate([
-            'title' => 'bail|required|unique:camps|max:40',
-            'description' => 'required',
-            'image' => 'required',
-            'charge' => 'required|numeric',
-            'charge_reduced' => 'required|numeric',
-            'age_start' => 'required|numeric',
-            'age_end' => 'required|numeric',
-            'type' => 'required|max:40',
-        ]);
-
-        $camp = new Camp;
-        $camp->title = $validated["title"];
-        $camp->description = $validated["description"];
-        $camp->image = $validated["image"];
-        $camp->type = $validated["type"];
-        $camp->charge = $validated["charge"];
-        $camp->charge_reduced = $validated["charge_reduced"];
-        $camp->age_start = $validated["age_start"];
-        $camp->age_end = $validated["age_end"];
-        $camp->project_id = $project->id;
-        $camp->save();
+        
+        Camp::create(array_merge($this->validateCamp(), [
+            'project_id' => $project->id,
+        ]));
 
         return redirect()->action(
             [CampController::class, 'index'], [$project]
@@ -83,4 +65,50 @@ class CampController extends Controller
         ]);
     }
 
+    /**
+     * Delete a Camp.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Camp $camp)   //TODO: add success message
+    {
+        $camp->delete();
+        return redirect()->action(
+            [CampController::class, 'index']
+        );
+    }
+
+    /**
+     * Update a Camp.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Camp $camp)
+    {
+        $attributes = $this->validatePost($camp);
+
+        $camp->update($attributes);
+
+        return redirect()->action(
+            [ProjectController::class, 'show'], [$camp]
+        );    
+    }
+    
+    protected function validateCamp(?Camp $camp = null): array
+    {
+        $camp ??= new Camp();
+
+        return request()->validate([
+            'title' => 'bail|required|unique:camps|max:40',
+            'description' => 'required',
+            'image' => 'required',
+            'charge' => 'required|numeric',
+            'charge_reduced' => 'required|numeric',
+            'age_start' => 'required|numeric',
+            'age_end' => 'required|numeric',
+            'type' => 'required|max:40',
+        ]);
+    }
 }
