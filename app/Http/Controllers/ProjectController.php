@@ -31,7 +31,9 @@ class ProjectController extends Controller
      * @return \Illuminate\View\View
      */
     public function show(Project $project){
+        $camps = Project::find($project->id)->camps;
         return view('projects.show', [
+            "camps" => $camps,
             "project" => $project
         ]);
     }
@@ -43,7 +45,9 @@ class ProjectController extends Controller
      */
     public function settings(Project $project)
     {
+        $camps = Project::find($project->id)->camps; //TODO: Have to Add Periods and Workshops to Camp object
         return view('projects.settings', [
+            "camps" => $camps,
             "project" => $project
         ]);
     }
@@ -88,7 +92,7 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function delete(Project $project)   //TODO: add success message
+    public function delete(Project $project)   //TODO: add success
     {
         $project->delete();
         return redirect()->action(

@@ -17,7 +17,6 @@ class CampController extends Controller
     public function index(Project $project)
     {
         $camps = Project::find($project->id)->camps; //TODO: Have to Add Periods and Workshops to Camp object
-
         return view('camps.index', [
             'camps' => $camps,
             'project' => $project

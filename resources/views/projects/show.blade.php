@@ -1,4 +1,4 @@
-<x-app-layout :project=$project> {{-- Pass project down to app layout just so it can pass it futher down to sidebar layout --}}
+<x-app-layout :project=$project :camps=$camps> {{-- Pass project and camps down to app layout just so it can pass it futher down to sidebar layout --}}
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ $project->title }}

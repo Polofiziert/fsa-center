@@ -32,6 +32,7 @@
             </div>
             <div>
                 @props(['project']) {{-- Pass down the Project Object for the sidebar from the layout --}}
+                @props(['camps']) {{-- Pass down the Camp Object for the sidebar from the layout --}}
                 @if (isset($project))
                         @include('layouts.sidebar')
                 @else
