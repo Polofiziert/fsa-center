@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('periods', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('camp_id');
             $table->string('title');
             $table->date('start');
             $table->date('end');

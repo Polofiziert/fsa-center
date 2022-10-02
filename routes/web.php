@@ -46,6 +46,6 @@ Route::post('project/{project}/camp/delete/{camp}', [CampController::class, 'del
 Route::post('project/{project}/camp/update/{camp}', [CampController::class, 'update'])->middleware(['auth'])->name('updateCamp');
 Route::post('project/{project}/camp', [CampController::class, 'store'])->middleware(['auth'])->name('storeCamp');
 
-//Route::get('project/{project}/camp/{camp}', [CampController::class, 'index'])->middleware(['auth'])->name('showCamp');
+Route::get('project/{project}/camp/{camp}', [CampController::class, 'show'])->middleware(['auth'])->name('showCamp');
 
 require __DIR__.'/auth.php';

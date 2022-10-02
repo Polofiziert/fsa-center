@@ -14,4 +14,7 @@ class Camp extends Model
     public function project() {
         return $this->belongsTo(Project::class);
     }
+    public function periods() {
+        return $this->hasMany(Period::class);
+    }
 }

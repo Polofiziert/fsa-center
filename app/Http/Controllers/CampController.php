@@ -58,9 +58,13 @@ class CampController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Project $project, Camp $camp){
-        return view('project', [
+        $camps = Project::find($project->id)->camps; 
+        $periods = Camp::find($camp->id)->periods;
+        return view('camps.show', [
             "project" => $project,
-            "camp" => $camp
+            "camp" => $camp,
+            "camps" => $camps,
+            "periods" => $periods
         ]);
     }
 
