@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CampController;
+use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\ProjectController;
 use App\Models\Project;
 use Database\Factories\ProjectFactory;
@@ -47,5 +48,11 @@ Route::post('project/{project}/camp/update/{camp}', [CampController::class, 'upd
 Route::post('project/{project}/camp', [CampController::class, 'store'])->middleware(['auth'])->name('storeCamp');
 
 Route::get('project/{project}/camp/{camp}', [CampController::class, 'show'])->middleware(['auth'])->name('showCamp');
+
+//No Create Periods, because the form is in the show camp site
+Route::post('project/{project}/camp/{camp}/period/{period}/delete', [PeriodController::class, 'delete'])->middleware(['auth'])->name('deletePeriod');
+Route::post('project/{project}/camp/{camp}/period/{period}/update', [PeriodController::class, 'update'])->middleware(['auth'])->name('updatePeriod');
+Route::post('project/{project}/camp/{camp}/period', [PeriodController::class, 'store'])->middleware(['auth'])->name('storePeriod');
+//No Sho Period, because they're shown in the showCamp site
 
 require __DIR__.'/auth.php';
