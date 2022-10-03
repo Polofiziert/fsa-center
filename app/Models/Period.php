@@ -12,4 +12,14 @@ class Period extends Model
     public function camp() {
         return $this->belongsTo(Camp::class);
     }
+    
+    public function project()
+    {
+        return $this->hasOneThrough(Project::class, Camp::class);
+    }
+
+    public function workshops()
+    {
+        return $this->belongsToMany(Workshop::class)->withTimestamps();;
+    }
 }

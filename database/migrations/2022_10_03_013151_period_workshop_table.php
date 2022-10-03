@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('periods', function (Blueprint $table) {
+        Schema::create('period_workshop', function (Blueprint $table){
             $table->id();
-            $table->foreignId('camp_id');
-            $table->string('title');
-            $table->date('start');
-            $table->date('end');
-            $table->integer('age_start');
-            $table->integer('age_end');
+            $table->string('workshop_id');
+            $table->string('period_id');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('periods');
+        Schema::dropIfExists('period_workshop');
     }
 };
