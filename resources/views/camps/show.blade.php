@@ -59,7 +59,10 @@
                                     <svg onclick="document.getElementById('edit_period_showMore_div{{$loop->index}}').style.display = 'none'; document.getElementById('edit_period_showMore_icon{{$loop->index}}').style.display = 'block'; document.getElementById('edit_period_showLess_icon{{$loop->index}}').style.display = 'none';" id="edit_period_showLess_icon{{$loop->index}}" style="display:none" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="m7.4 15.375-1.4-1.4 6-6 6 6-1.4 1.4-4.6-4.6Z"/></svg>
                                 </dd>
                                 <dd id="edit_period_showMore_div{{$loop->index}}" style="display: none" class="mt-1  text-sm text-gray-900 sm:col-span-4 sm:mt-0">
-                                    Hello
+                                    <h3>{{__("Workshops")}}:</h3>
+                                    <div class="grid grid-cols-2 gap-4 auto-rows-max">
+                                        hello 
+                                    </div>
                                 </dd>
                             </div>
                             @endforeach

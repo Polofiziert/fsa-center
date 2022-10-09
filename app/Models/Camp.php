@@ -17,4 +17,7 @@ class Camp extends Model
     public function periods() {
         return $this->hasMany(Period::class);
     }
+    public function workshops() {
+        return $this->hasManyThrough(Workshop::class, Period::class);
+    }
 }

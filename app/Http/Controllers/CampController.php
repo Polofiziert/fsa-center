@@ -60,6 +60,7 @@ class CampController extends Controller
     public function show(Project $project, Camp $camp){
         $camps = Project::find($project->id)->camps; 
         $periods = Camp::find($camp->id)->periods;
+        //$workshops = $camp->workshops()->get();
         return view('camps.show', [
             "project" => $project,
             "camp" => $camp,

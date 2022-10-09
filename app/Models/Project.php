@@ -10,7 +10,6 @@ class Project extends Model
 {
     use HasFactory;
     
-    //HasMany BelongsToMany BelongsTo
     public function user() {
         return $this->belongsTo(User::class);
     }
