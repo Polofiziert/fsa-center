@@ -20,6 +20,6 @@ class Period extends Model
 
     public function workshops()
     {
-        return $this->hasMany(Workshop::class)->withTimestamps();;
+        return $this->belongsToMany(Workshop::class)->withTimestamps();;
     }
 }

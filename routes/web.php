@@ -52,7 +52,19 @@ Route::get('project/{project}/camp/{camp}', [CampController::class, 'show'])->mi
 //No Create Periods, because the form is in the show camp site
 Route::post('project/{project}/camp/{camp}/period/{period}/delete', [PeriodController::class, 'delete'])->middleware(['auth'])->name('deletePeriod');
 Route::post('project/{project}/camp/{camp}/period/{period}/update', [PeriodController::class, 'update'])->middleware(['auth'])->name('updatePeriod');
+Route::post('project/{project}/camp/{camp}/period/{period}/attachWorkshop', [PeriodController::class, 'attachWorkshop'])->middleware(['auth'])->name('attachWorkshopToPeriod');
 Route::post('project/{project}/camp/{camp}/period', [PeriodController::class, 'store'])->middleware(['auth'])->name('storePeriod');
 //No Sho Period, because they're shown in the showCamp site
+
+
+//Route::get('project/{project}/workshop', [CampController::class, 'index'])->middleware(['auth'])->name('camps');
+
+//Route::get('project/{project}/workshop/create', [CampController::class, 'create'])->middleware(['auth'])->name('createCamp');
+//Route::post('project/{project}/workshop/delete/{workshop}', [CampController::class, 'delete'])->middleware(['auth'])->name('deleteCamp');
+//Route::post('project/{project}/workshop/update/{workshop}', [CampController::class, 'update'])->middleware(['auth'])->name('updateCamp');
+//Route::post('project/{project}/workshop', [CampController::class, 'store'])->middleware(['auth'])->name('storeCamp');
+
+//Route::get('project/{project}/workshop/{workshop}', [CampController::class, 'show'])->middleware(['auth'])->name('showCamp');
+
 
 require __DIR__.'/auth.php';

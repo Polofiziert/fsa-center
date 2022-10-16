@@ -19,4 +19,11 @@ class Project extends Model
     public function camps() {
         return $this->hasMany(Camp::class);
     }
+    public function periods() {
+        return $this->hasManyThrough(Period::class, Camp::class);
+    }
+    public function workshops()
+    {
+        return $this->hasMany(Workshop::class);
+    }
 }

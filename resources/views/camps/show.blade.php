@@ -49,6 +49,7 @@
                                     </div>
                                 </form>
                             </div>
+
                             @foreach ($periods as $period)
                             <div class="@if($loop->odd) bg-white @else bg-zinc-100 @endif px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
                                 <dt class="text-sm font-medium text-gray-500">{{$period->title}} {{$loop->even}}</dt>
@@ -61,11 +62,53 @@
                                 <dd id="edit_period_showMore_div{{$loop->index}}" style="display: none" class="mt-1  text-sm text-gray-900 sm:col-span-4 sm:mt-0">
                                     <h3>{{__("Workshops")}}:</h3>
                                     <div class="grid grid-cols-2 gap-4 auto-rows-max">
-                                        hello 
+
+                                        @foreach ($period->workshops as $workshop)
+                                            {{$workshop->title}}
+                                        @endforeach
+
+                                        <x-modal :id="'add-Workshops-modal-'.$loop->index" :type="'info'" :title="'Add Workshop'" :description="'Select the Workshops you wanna add'">
+                                            <form method="POST" action="{{ route('attachWorkshopToPeriod', [$project, $camp, $period->id]) }}">
+                                                @csrf
+                                                <div>
+                                                    @if ($errors->any())
+                                                        <div class="alert alert-danger">
+                                                            <ul>
+                                                                @foreach ($errors->all() as $error)
+                                                                    <li>{{ $error }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
+                                                
+                                                    <select id="workshops" name="workshops[]" size="4" multiple>
+
+                                                        @foreach ($workshops as $workshop)
+                                                            <option value="{{$workshop->id}}">{{$workshop->title}}</option>
+                                                        </br>
+                                                        @endforeach
+                                                        
+                                                    </select>
+                                                    
+                                                </div>
+                                                <button type="submit" class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">
+                                                    {{__('Add')}}
+                                                </button>
+                                                <button type="button" onclick="document.getElementById('add-Workshops-modal-{{$loop->index}}').style.display = 'none';" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                                    {{__('Cancel')}}
+                                                </button>
+                                            </form>
+                                        </x-modal>
+
+                                        <button type="button" onclick="document.getElementById('add-Workshops-modal-{{$loop->index}}').style.display = 'block';" class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">
+                                            {{__("Add Workshop")}}
+                                        </button>
+                                        
                                     </div>
                                 </dd>
                             </div>
                             @endforeach
+
                         </dl>
                     </div>
                     </div>

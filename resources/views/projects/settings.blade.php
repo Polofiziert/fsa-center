@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-  <x-modal :type="'warning'" :title="'Delete Project'" :description="'Are you shure you want to delete this Project?'">
+  <x-modal :id="'modal'" :type="'warning'" :title="'Delete Project'" :description="'Are you shure you want to delete this Project?'">
       <form method="POST" action="{{ route('deleteProject', $project) }}">
         @csrf
         <button type="submit" class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">{{__('Delete')}}</button>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Camp;
+use App\Models\Period;
 use App\Models\Project;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
@@ -59,13 +60,16 @@ class CampController extends Controller
      */
     public function show(Project $project, Camp $camp){
         $camps = Project::find($project->id)->camps; 
-        $periods = Camp::find($camp->id)->periods;
+        $periods = Period::with('workshops')->where('camp_id', $camp->id )->get();
+        //$periods = $periods::with('workshops')->get(); // retrive workshops of all periods of the camp
+        $workshops = $project->workshops()->get();
         //$workshops = $camp->workshops()->get();
         return view('camps.show', [
             "project" => $project,
             "camp" => $camp,
             "camps" => $camps,
-            "periods" => $periods
+            "periods" => $periods,
+            "workshops" => $workshops,
         ]);
     }
 

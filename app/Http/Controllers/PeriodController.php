@@ -31,4 +31,15 @@ class PeriodController extends Controller
             [CampController::class, 'show'], [$project, $camp]
         );
     }
+
+    public function attachWorkshop(Request $request, $project, $camp, Period $period)
+    {            
+        $validated = $request->validate([
+            'workshops' => 'required|array|min:1'
+        ]);
+        $period->workshops()->attach($validated["workshops"]);
+        return redirect()->action(
+            [CampController::class, 'show'], [$project, $camp]
+        );
+    }
 }

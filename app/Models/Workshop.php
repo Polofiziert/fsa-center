@@ -8,11 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Workshop extends Model
 {
     use HasFactory;
-    
-    public function project()
-    {
-        return $this->belongsTo(Project::class);
-    }
 
     public function periods()
     {
